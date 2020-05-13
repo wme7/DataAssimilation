@@ -1,0 +1,16 @@
+prm.modelname = 'none';
+prm.nexperiment = 1;
+prm.verbose = 1;
+prm.seed = 2;
+prm.nitermax = 20;
+prm.nresetmax = 50;
+prm.cycle_nstep = 1;
+prm.inflation = 1;
+prm.C = 10^4;
+prm.nspinup = 0;
+prm.rotate = 0;
+prm.calc_norms = 0;
+prm.collapseratio = 0.01;
+prm.rfactor = 1;
+prm.use_cholesky = 1;
+prm.epsilon = 1e-5;

@@ -1,0 +1,101 @@
+Version 0.44
+9/11/2011
+
+This directory contains Matlab code used for experiments in paper
+
+Sakov P., D. Oliver and L. Bertino (2011) The Iterated EnKF for strongly 
+nonlinear systems. (Submitted to MWR.)
+
+Contact: pavel.sakov@gmail.com
+
+* Before running experiments with L3:
+
+  If you are on other platform than Linux x86_64, you need either to compile 
+  L3_step_c (in Matlab run "mex L3_step_c.c") or set l.3 in L3_setup.m to 
+  "if 1 == 1". (Note that running compiled code is faster. There is also a
+  small numerical difference.)
+
+* Before running experiments with L40:
+
+  If you are on other platform than Linux x86_64, you need either to compile 
+  L40_step_c (in Matlab run "mex L40_step_c.c") or set l.2 in L40_setup.m to 
+  "if 1 == 1".
+
+* Convention for this document: settings marked with the "*" in the end of the
+  line need to be returned to the initial value after the run.
+
+1. To reproduce results in Table 1:
+
+-- run.m, l. 6: set "model = 1;"
+-- L3_setup.m, l. 17: set "SETUP = <setup #>;", where setup # = {1,...,8}
+-- run "run" with each of 8 settings
+
+2. To reproduce Figure 1:
+
+-- run.m, l. 6: set "model = 1;"
+-- L3_setup.m, l. 17: set "SETUP = 2;"
+-- L3_setup.m, l. 21: set "prm.doplot = 1;" *
+-- L3_setup, l. 30: set "prm.nspinup = 100;" *
+-- L3_setup, l. 30: set "prm.ncycle = 200;" *
+-- run "run"
+-- run "plot_100"
+
+3. To reproduce results in Table 2:
+
+-- run.m, l. 6: set "model = 1;"
+-- L3_setup.m, l. 17: set "SETUP = <setup #>;", where setup # = {9,...,16}
+-- run "run" with each of 8 settings
+
+4. To reproduce results in Table 3:
+
+-- set run.m, l. 6 to "model = 2;"
+-- L40_setup.m, l. 15: set "SETUP = <setup #>;", where setup # = {1,...,8}
+-- run "run"
+
+5. To reproduce Figure 2:
+
+-- run_batch.m, l. 3: set "METHOD = <method #>;", where method # = {1,2,3}
+-- run "run_batch"
+
+*  It takes a while (many hours) to calculate. If you have a multi-processor,
+   machine you can run the above 3 instances in parallel. You also can run 3
+   more instances by setting "REVERSE = 1;" on l. 4 of run_batch.m
+
+-- run "plot_batch".
+
+6. To reproduce results in Table 4:
+
+-- set run.m, l. 6 to "model = 2;"
+-- L40_setup.m, l. 15: set "SETUP = <setup #>;", where setup # = {9-14,16,
+   19-23}
+-- run "run4"
+
+* Note that inflation is set to NaN for SETUP = {15,17,18}. Set it to a
+  finite value if you wish to try these settings. 
+
+7. To reproduce Figure 3:
+
+-- set run.m, l. 6 to "model = 2;"
+-- set L40_setup.m, l. 15 to "SETUP = 2;"
+-- set L40_setup.m, l. 20 to "prm.calc_norms = 1;" *
+-- set L40_setup.m, l. 181: set "if 1 == 1" *
+-- run "run"
+
+Note that the last line in the run summary gives the mean of
+||T^-1|| * ||A_1^f|| / ||A_2^f|| that is referred to in the Experiment 4 
+section. To obtain it for the EnKF and EKF systems repeat this run with
+ L40_setup.m, l. 14 set to "SETUP = 1;" and "SETUP = 3;"
+
+8. To reproduce Figure 4:
+
+-- set run.m, l. 6 to "model = 2;"
+-- set L40_setup.m, l. 15 to "SETUP = 19;"
+-- set L40_setup.m, l. 20 to "prm.calc_norms = 1;" *
+-- set L40_setup.m, l. 181 to "if 1 == 1" *
+-- run "run"
+
+9. To reproduce results in Table 5:
+
+-- set run.m, l. 6 to "model = 2;"
+-- L40_setup.m, l. 15: set "SETUP = <setup #>;", where setup # = {24,...,31}
+-- run "run"

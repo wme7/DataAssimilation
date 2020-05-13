@@ -1,0 +1,16 @@
+
+# to determine: prior, penalty, and filter
+case_name prior2&2   # prior-2&-2 or prior0&0 or prior2&2
+penalty_type 0         # 0: equality; 1: inequality 2: multiple inequality
+filter_name EnKF    # EnKF or REnKF
+
+plot_flag 1         # plot evolution of parameter or not
+
+# hyper parameter in inflation function
+lamb 10.0            
+S    5
+d    2
+
+ensemble_size  1000
+max_iteration  50
+converge_criteria 1.e-8
